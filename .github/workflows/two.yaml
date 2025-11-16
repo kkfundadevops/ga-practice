@@ -1,26 +1,16 @@
-name: First Workflow
+name: File Operations
 
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:   #runs the workflow manually
+on: workflow_dispatch
 
 jobs:
-  basic-demo:
+  files:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Say Hello
-        run: echo "Hello from KK FUNDA"
+      - name: Create file
+        run: echo "KK FUNDA TEST FILE" > demo.txt
 
-      - name: Show Linux version
-        run: uname -a
+      - name: Show file content
+        run: cat demo.txt
 
-      - name: List current directory
-        run: ls -ltr
-
-      - name: Print current user
-        run: whoami
-
-      - name: Print date and time
-        run: date
+      - name: List directory
+        run: ls -l
