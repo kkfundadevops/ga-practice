@@ -8,4 +8,7 @@ jobs:
         steps:
         - name: welcome kk funda messgae
           run: echo "Hello KK FUNDA WELCOME TO GA"
-          
+        - name: list the files
+          run: ls
+        - name: print the present working dir
+          run: pwd
