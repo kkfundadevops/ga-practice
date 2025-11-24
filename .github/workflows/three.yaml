@@ -1,12 +1,12 @@
-name: Multi OS
+name: Python Versions
 on:
   workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [3.8, 3.9, 3.10]
     steps:
-      - run: echo "Testing on ${{ matrix.os }}"
+      - run: echo "Testing on Python ${{ matrix.python }}"
