@@ -1,4 +1,4 @@
-name: Matrix with Include
+name: Matrix with Exclude
 on:
   workflow_dispatch:
 
@@ -8,13 +8,9 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [16, 18]
-        include:
-          - os: ubuntu-latest
+        node: [14, 16, 18]
+        exclude:
+          - os: windows-latest
             node: 18
-            message: optimized-build
     steps:
-      - run: |
-          echo "OS ${{ matrix.os }}"
-          echo "Node ${{ matrix.node }}"
-          echo "Message ${{ matrix.message }}"
+      - run: echo "$matrix.os $matrix.node"
