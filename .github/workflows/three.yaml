@@ -1,16 +1,16 @@
-name: Matrix with Exclude
+name: Docker Matrix
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  deploy:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node: [14, 16, 18]
-        exclude:
-          - os: windows-latest
-            node: 18
+        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+        images: [hello-world, alpine]
     steps:
-      - run: echo "$matrix.os $matrix.node"
+      - name: Docker details
+        run: docker info
+      - name: Run image
+        run: docker run ${{ matrix.images }}
