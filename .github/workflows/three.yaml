@@ -1,18 +1,13 @@
-name: Show File Content
-
+name: Matrix Test
 on:
   workflow_dispatch:
 
 jobs:
-  show:
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: List files
-        run: ls -ltr
-
-      - name: Display file content
-        run: cat sample.txt
+      - name: Print OS
+        run: echo "Running on ${{ matrix.os }}"
